@@ -1,7 +1,13 @@
 package christmas.view;
 
+import christmas.constant.OutputMessage;
+
 public class OutputView {
-    public static void printIntroduction(){
-        System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
+    public static void printIntroduction() {
+        System.out.println(OutputMessage.FIRST_PRINT_INTRODUCTION.getMessage());
+    }
+
+    public static void printErrorMessage(String message) {
+        System.out.println(message);
     }
 }
