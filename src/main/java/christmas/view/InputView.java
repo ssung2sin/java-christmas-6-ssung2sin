@@ -6,7 +6,7 @@ import christmas.service.InputService;
 
 public class InputView {
 
-    private InputService inputService;
+    private final InputService inputService;
 
     public InputView(InputService inputService) {
         this.inputService = inputService;
