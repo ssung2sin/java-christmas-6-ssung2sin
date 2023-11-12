@@ -7,9 +7,6 @@ public class AllData {
     private Date date;
     private List<OrderMenu> orderMenus;
 
-    public AllData() {
-
-    }
 
     public void saveDate(int date) {
         this.date = Date.saveDate(date);
@@ -19,11 +16,12 @@ public class AllData {
         return this.date.getDate();
     }
 
-    public void saveOrderMenus(OrderMenu orderMenu) {
-        this.orderMenus.add(orderMenu);
+    public void saveOrderMenus(String category, String orderMenu, int orderCount) {
+        OrderMenu menu = OrderMenu.saveOrderMenu(category, orderMenu, orderCount);
+        orderMenus.add(menu);
     }
 
-    public List<OrderMenu> getOrderMenu() {
+    public List<OrderMenu> getOrderMenus() {
         return orderMenus;
     }
 }

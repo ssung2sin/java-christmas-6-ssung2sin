@@ -15,6 +15,7 @@ public class ChristmasController {
 
     public void run() {
         inputVisitDate();
+        loadMenu();
     }
 
     private void inputVisitDate() {
@@ -28,5 +29,9 @@ public class ChristmasController {
                 OutputView.printErrorMessage(error.getMessage());
             }
         }
+    }
+
+    private void loadMenu() {
+        dataService.loadMenu();
     }
 }

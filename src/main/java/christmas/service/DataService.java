@@ -13,4 +13,8 @@ public class DataService {
     public void saveReservationDate(int date) {
         allData.saveDate(date);
     }
+
+    public void loadMenu() {
+
+    }
 }
