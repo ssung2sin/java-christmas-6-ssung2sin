@@ -2,6 +2,7 @@ package christmas.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.constant.Number;
 import christmas.model.AllData;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -55,4 +56,15 @@ public class DataServiceTest {
         assertThat(giftMenu).contains("샴페인 1개");
     }
 
+    @DisplayName("입력한 방문 날짜에 따른 할인 금액 출력 확인")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5, 7, 13, 18, 25, 31})
+    void 입력한_날짜에_따른_할인_금액_검사(int date) {
+        allData.saveDate(date, "상관없음");
+        int discountAmount = dataService.printChristmasDiscount();
+        int amount = Number.DISCOUNT_ON_CHRISTMAS_BASIS.getNumber() +
+                Number.DISCOUNT_AMOUT_PER_DATE.getNumber() * (date - 1);
+        assertThat(discountAmount).isEqualTo(amount);
+
+    }
 }
