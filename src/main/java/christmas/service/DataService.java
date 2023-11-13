@@ -20,8 +20,9 @@ public class DataService {
     public void saveOrderMenus(List<String[]> menuList) {
         SavedMenus menu;
         for (String[] menuData : menuList) {
+            int menuCount = Integer.parseInt(menuData[Number.COUNT.getNumber()]);
             menu = compareSavedMenus(menuData[Number.MENU.getNumber()]);
-            allData.saveOrderMenus(menu, menuData[Number.COUNT.getNumber()]);
+            allData.saveOrderMenus(menu, menuCount);
         }
 
     }
