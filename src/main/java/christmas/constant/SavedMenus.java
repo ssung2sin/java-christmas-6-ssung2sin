@@ -13,7 +13,7 @@ public enum SavedMenus {
     ZERO_COKE("음료", "제로콜라", 3000),
     RED_WINE("음료", "레드와인", 60000),
 
-    CHAMPAGNE("음룍", "샴페인", 25000);
+    CHAMPAGNE("음료", "샴페인", 25000);
 
     private final String category;
     private final String menuName;

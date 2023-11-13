@@ -23,13 +23,6 @@ public class DataServiceTest {
         this.inputService = new InputService();
     }
 
-    @DisplayName("입력한 날짜가 잘 저장되어 있는지 테스트")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 31, 20})
-    void 입력한_날짜_저장_검사(int input) {
-       
-    }
-
     @DisplayName("입력한 메뉴 : 에피타이저 / 양송이수프 / 6000 / 3 +"
             + "음료 / 제로콜라 / 3000 / 2")
     @Test
@@ -44,6 +37,22 @@ public class DataServiceTest {
         assertThat(allData.getOrderMenus().get(1).getMenuName()).isEqualTo("제로콜라");
         assertThat(allData.getOrderMenus().get(1).getMenuAmount()).isEqualTo(3000);
         assertThat(allData.getOrderMenus().get(1).getMenuCount()).isEqualTo(2);
+    }
+
+    @DisplayName("총 금액에 맞게 증정 품목이 출력되는지 확인")
+    @ParameterizedTest
+    @ValueSource(ints = {80000, 119000})
+    void 총_금액에_맞는_증정_품목_검사1(int totalAmount) {
+        StringBuilder giftMenu = dataService.printGiftMenu(totalAmount);
+        assertThat(giftMenu).contains("없음");
+    }
+
+    @DisplayName("총 금액에 맞게 증정 품목이 출력되는지 확인")
+    @ParameterizedTest
+    @ValueSource(ints = {120000, 310000})
+    void 총_금액에_맞는_증정_품목_검사2(int totalAmount) {
+        StringBuilder giftMenu = dataService.printGiftMenu(totalAmount);
+        assertThat(giftMenu).contains("샴페인 1개");
     }
 
 }

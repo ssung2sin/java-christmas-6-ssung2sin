@@ -9,6 +9,7 @@ public enum OutputMessage {
     OUTPUT_ORDER_MENU("%s %d개\n"),
     PRINT_TOTAL_AMOUNT_BEFORE_DISCOUNT("<할인 전 총주문 금액>"),
     PRINT_GIFT_MENU("<증정 메뉴>"),
+    NOTHING("없음"),
     PRINT_BENEFITS("<혜택 내역>"),
     PRINT_TOTAL_BENEFITS_AMOUNT("<총혜택 금액>"),
     PRINT_ESTIMATED_AMOUNT("<할인 후 예상 결제 금액>"),

@@ -22,4 +22,17 @@ public class OutputView {
     public static void outputOrderMenus(String menuName, int menuCount) {
         System.out.printf(OutputMessage.OUTPUT_ORDER_MENU.getMessage(), menuName, menuCount);
     }
+
+    public static void printTotalAmountBeforeDiscount(String totalAmount) {
+        System.out.println();
+        System.out.println(OutputMessage.PRINT_TOTAL_AMOUNT_BEFORE_DISCOUNT.getMessage());
+        System.out.println(totalAmount + "원");
+        System.out.println();
+    }
+
+    public static void printGiftMenu(StringBuilder giftMenu) {
+        System.out.println(OutputMessage.PRINT_GIFT_MENU.getMessage());
+        System.out.println(giftMenu);
+        System.out.println();
+    }
 }
