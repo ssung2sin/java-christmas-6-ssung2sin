@@ -53,4 +53,13 @@ public class InputServiceTest {
                 .hasMessage(ErrorMessage.ENTER_INVALID_ORDER_MENU.getMessage());
     }
 
+    @DisplayName("중복 메뉴 입력시 에러 발생")
+    @ParameterizedTest
+    @ValueSource(strings = {"양송이수프-2,양송이수프-4", "제로콜라-1,양송이수프-1,제로콜라-2"})
+    void 입력_메뉴_유효성_검사4(String input) {
+        assertThatThrownBy(() -> inputService.saveOrderMenus(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.ENTER_INVALID_ORDER_MENU.getMessage());
+    }
+
 }

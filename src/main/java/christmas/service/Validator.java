@@ -30,7 +30,7 @@ public class Validator {
     public static void duplicateMenuName(List<String[]> menuList) {
         String[] menuName = separateMenuName(menuList);
         for (int index = 0; index < menuList.size(); index++) {
-            if(compareMenuName(menuName[index],menuName,index)){
+            if (compareMenuName(menuName[index], menuName, index)) {
                 throw new IllegalArgumentException(ErrorMessage.ENTER_INVALID_ORDER_MENU.getMessage());
             }
         }
@@ -44,13 +44,13 @@ public class Validator {
         return menuName;
     }
 
-    private static boolean compareMenuName(String menuName,String[] arrayMenuName,int menuIndex){
-        for(int index = 0; index < arrayMenuName.length; index++) {
-            if(index==menuIndex){
+    private static boolean compareMenuName(String menuName, String[] arrayMenuName, int menuIndex) {
+        for (int index = 0; index < arrayMenuName.length; index++) {
+            if (index == menuIndex) {
                 continue;
             }
-            if(menuName.equals(arrayMenuName[index])){
-                retrun true;
+            if (menuName.equals(arrayMenuName[index])) {
+                return true;
             }
         }
         return false;
