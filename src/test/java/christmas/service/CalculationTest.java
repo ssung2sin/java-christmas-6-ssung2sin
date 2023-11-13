@@ -23,7 +23,7 @@ public class CalculationTest {
         this.allData = new AllData();
         this.calculationService = new CalculationService(allData);
         this.dataService = new DataService(allData);
-        this.inputService = new InputService();
+        this.inputService = new InputService(dataService);
     }
 
     @DisplayName("평일 날짜 입력시 '평일'저장되는지 확인")

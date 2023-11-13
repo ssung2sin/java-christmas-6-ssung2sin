@@ -21,7 +21,7 @@ public class DataServiceTest {
     void init() {
         this.allData = new AllData();
         this.dataService = new DataService(allData);
-        this.inputService = new InputService();
+        this.inputService = new InputService(dataService);
     }
 
     @DisplayName("입력한 메뉴 : 에피타이저 / 양송이수프 / 6000 / 3 +"

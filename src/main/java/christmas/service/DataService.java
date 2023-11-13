@@ -64,6 +64,27 @@ public class DataService {
 
     }
 
+    public void checkAllMenuAreDrinks(List<String[]> menuList) {
+        int drinkCount = 0;
+        for (int menuListIndex = 0; menuListIndex < menuList.size(); menuListIndex++) {
+            String menuName = menuList.get(menuListIndex)[Number.MENU.getNumber()];
+            SavedMenus menu = compareSavedMenus(menuName);
+            assert menu != null;
+            String menuCategory = menu.getCategory();
+            if (checkMenuCategoryIsDrink(menuCategory)) {
+                drinkCount++;
+            }
+        }
+        Validator.CheckAllMenuAreDrink(drinkCount, menuList.size());
+    }
+
+    private boolean checkMenuCategoryIsDrink(String category) {
+        if (category.equals(SavedMenus.ZERO_COKE.getCategory())) {
+            return true;
+        }
+        return false;
+    }
+
     private SavedMenus compareSavedMenus(String menuName) {
         for (SavedMenus menu : SavedMenus.values()) {
             if (menuName.equals(menu.getMenuName())) {

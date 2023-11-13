@@ -9,8 +9,8 @@ import christmas.view.InputView;
 
 public class Application {
     public static void main(String[] args) {
-        InputView inputview = new InputView(new InputService());
         DataService dataService = new DataService(new AllData());
+        InputView inputview = new InputView(new InputService(dataService));
         CalculationService calculationService = new CalculationService(new AllData());
         ChristmasController controller = new ChristmasController(inputview, dataService, calculationService);
         controller.run();

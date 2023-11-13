@@ -23,7 +23,16 @@ public class Validator {
     }
 
     public static void inputMenuValidation(String[] menu) {
+        if (menu.length == Number.IS_NOT_EXISTED_MENU_COUNT.getNumber()) {
+            throw new IllegalArgumentException(ErrorMessage.ENTER_INVALID_ORDER_MENU.getMessage());
+        }
+
         isMenuNameValidation(menu[Number.MENU.getNumber()]);
+
+        if (menu[Number.COUNT.getNumber()] == null) {
+            throw new IllegalArgumentException(ErrorMessage.ENTER_INVALID_ORDER_MENU.getMessage());
+        }
+        
         isMenuCountValidation(menu[Number.COUNT.getNumber()]);
     }
 
@@ -58,6 +67,12 @@ public class Validator {
 
     public static void totalCountValidation(int totalCount) {
         if (totalCount > 20) {
+            throw new IllegalArgumentException(ErrorMessage.ENTER_INVALID_ORDER_MENU.getMessage());
+        }
+    }
+
+    public static void CheckAllMenuAreDrink(int drinkCount, int menuListSize) {
+        if (drinkCount == menuListSize) {
             throw new IllegalArgumentException(ErrorMessage.ENTER_INVALID_ORDER_MENU.getMessage());
         }
     }

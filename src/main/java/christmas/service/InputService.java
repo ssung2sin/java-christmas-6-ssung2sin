@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputService {
+    final DataService dataService;
+
+    public InputService(DataService dataService) {
+        this.dataService = dataService;
+    }
 
     public int convertDateNumber(String input) {
         Validator.isIntegerNumber(input);
@@ -25,6 +30,7 @@ public class InputService {
         }
         Validator.duplicateMenuName(menuList);
         Validator.totalCountValidation(totalCount);
+        dataService.checkAllMenuAreDrinks(menuList);
         return menuList;
     }
 

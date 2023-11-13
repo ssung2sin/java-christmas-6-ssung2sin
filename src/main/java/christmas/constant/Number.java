@@ -11,8 +11,8 @@ public enum Number {
     DELETE_LAST_INDEX(6),
     FIRST_DIGIT(0),
     DISCOUNT_ON_CHRISTMAS_BASIS(1000),
-    DISCOUNT_AMOUT_PER_DATE(100);
-
+    DISCOUNT_AMOUT_PER_DATE(100),
+    IS_NOT_EXISTED_MENU_COUNT(1);
     private final int number;
 
     Number(int number) {
