@@ -11,7 +11,15 @@ public class OutputView {
         System.out.println(message);
     }
 
-    public static void printInputOrderMenus() {
-        System.out.println(OutputMessage.ENTER_MENU_TO_ORDER.getMessage());
+    public static void printBenefitContent(int date) {
+        System.out.printf(OutputMessage.PRINT_BENEFIT_CONTENT.getMessage(), date);
+    }
+
+    public static void printSubjectOfOrderMenu() {
+        System.out.println(OutputMessage.PRINT_ORDER_MENU.getMessage());
+    }
+
+    public static void outputOrderMenus(String menuName, int menuCount) {
+        System.out.printf(OutputMessage.OUTPUT_ORDER_MENU.getMessage(), menuName, menuCount);
     }
 }

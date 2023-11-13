@@ -20,6 +20,8 @@ public class ChristmasController {
     public void run() {
         inputVisitDate();
         inputOrderMenus();
+        printBenefitContent();
+        printOrderMenus();
     }
 
     private void inputVisitDate() {
@@ -36,6 +38,10 @@ public class ChristmasController {
         }
     }
 
+    private void printBenefitContent() {
+        dataService.printBenefitContent();
+    }
+
 
     private void inputOrderMenus() {
         List<String[]> menuList;
@@ -48,5 +54,10 @@ public class ChristmasController {
             }
         }
         dataService.saveOrderMenus(menuList);
+    }
+
+    private void printOrderMenus() {
+        OutputView.printSubjectOfOrderMenu();
+        dataService.printOrderMenus();
     }
 }

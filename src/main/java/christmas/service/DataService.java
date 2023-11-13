@@ -3,6 +3,7 @@ package christmas.service;
 import christmas.constant.Number;
 import christmas.constant.SavedMenus;
 import christmas.model.AllData;
+import christmas.view.OutputView;
 import java.util.List;
 
 public class DataService {
@@ -17,6 +18,14 @@ public class DataService {
         allData.saveDate(date, dateType);
     }
 
+    public void printOrderMenus() {
+        for (int OrderMenuIndex = 0; OrderMenuIndex < allData.getOrderMenus().size(); OrderMenuIndex++) {
+            String menuName = allData.getOrderMenus().get(OrderMenuIndex).getMenuName();
+            int menuCount = allData.getOrderMenus().get(OrderMenuIndex).getMenuCount();
+            OutputView.outputOrderMenus(menuName, menuCount);
+        }
+    }
+
     public void saveOrderMenus(List<String[]> menuList) {
         SavedMenus menu;
         for (String[] menuData : menuList) {
@@ -25,6 +34,11 @@ public class DataService {
             allData.saveOrderMenus(menu, menuCount);
         }
 
+    }
+
+    public void printBenefitContent() {
+        int date = allData.getDate();
+        OutputView.printBenefitContent(date);
     }
 
     private SavedMenus compareSavedMenus(String menuName) {
