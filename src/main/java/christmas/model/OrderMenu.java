@@ -1,5 +1,7 @@
 package christmas.model;
 
+import christmas.constant.SavedMenus;
+
 public class OrderMenu {
 
     private final String category;
@@ -14,8 +16,22 @@ public class OrderMenu {
         this.menuCount = menuCount;
     }
 
-    public static OrderMenu saveOrderMenu(String category, String menuName, int menuAmount, int menuCount) {
-        return new OrderMenu(category, menuName, menuAmount, menuCount);
+    /*private OrderMenu(String category, String menuName, int menuAmount) {
+        this.category = category;
+        this.menuName = menuName;
+        this.menuAmount = menuAmount;
+    }*/
+
+    public static OrderMenu saveOrderMenu(SavedMenus menu, int menuCount) {
+        return new OrderMenu(menu.getCategory(), menu.getMenuName(), menu.getMenuAmount(), menuCount);
+    }
+
+    /*public static OrderMenu loadMenu(String category, String menuName, int menuAmount) {
+        return new OrderMenu(category, menuName, menuAmount);
+    }*/
+
+    public String getCategory() {
+        return category;
     }
 
     public String getMenuName() {
@@ -24,5 +40,9 @@ public class OrderMenu {
 
     public int getMenuCount() {
         return menuCount;
+    }
+
+    public int getMenuAmount() {
+        return menuAmount;
     }
 }

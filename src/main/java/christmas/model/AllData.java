@@ -1,11 +1,19 @@
 package christmas.model;
 
+import christmas.constant.SavedMenus;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AllData {
 
     private Date date;
-    private List<OrderMenu> orderMenus;
+    private final List<OrderMenu> orderMenus;
+    /*private List<OrderMenu> menus;*/
+
+    public AllData() {
+        this.orderMenus = new ArrayList<>();
+        /*this.menus = new ArrayList<>();*/
+    }
 
     public void saveDate(int date) {
         this.date = Date.saveDate(date);
@@ -15,9 +23,18 @@ public class AllData {
         return this.date.getDate();
     }
 
-    public void saveOrderMenus(String category, String orderMenu, int menuAmount, int orderCount) {
-        OrderMenu menu = OrderMenu.saveOrderMenu(category, orderMenu, menuAmount, orderCount);
-        orderMenus.add(menu);
+    /*public void loadMenus(String category, String orderMenu, int menuAmount) {
+        OrderMenu menu = OrderMenu.loadMenu(category, orderMenu, menuAmount);
+        this.menus.add(menu);
+    }*/
+
+    /*public List<OrderMenu> getMenus() {
+        return menus;
+    }*/
+
+    public void saveOrderMenus(SavedMenus menu, int orderCount) {
+        OrderMenu orderMenu = OrderMenu.saveOrderMenu(menu, orderCount);
+        orderMenus.add(orderMenu);
     }
 
     public List<OrderMenu> getOrderMenus() {

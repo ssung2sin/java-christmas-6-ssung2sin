@@ -1,6 +1,9 @@
 package christmas.service;
 
+import christmas.constant.Number;
+import christmas.constant.SavedMenus;
 import christmas.model.AllData;
+import java.util.List;
 
 public class DataService {
 
@@ -14,7 +17,21 @@ public class DataService {
         allData.saveDate(date);
     }
 
-    public void loadMenu() {
+    public void saveOrderMenus(List<String[]> menuList) {
+        SavedMenus menu;
+        for (String[] menuData : menuList) {
+            menu = compareSavedMenus(menuData[Number.MENU.getNumber()]);
+            allData.saveOrderMenus(menu, menuData[Number.COUNT.getNumber()]);
+        }
 
+    }
+
+    private SavedMenus compareSavedMenus(String menuName) {
+        for (SavedMenus menu : SavedMenus.values()) {
+            if (menuName.equals(menu.getMenuName())) {
+                return menu;
+            }
+        }
+        return null;
     }
 }

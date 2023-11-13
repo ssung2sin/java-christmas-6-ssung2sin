@@ -3,6 +3,8 @@ package christmas.controller;
 import christmas.service.DataService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChristmasController {
     private final InputView inputView;
@@ -15,7 +17,8 @@ public class ChristmasController {
 
     public void run() {
         inputVisitDate();
-        loadMenu();
+        /*loadMenu();*/
+        inputOrderMenus();
     }
 
     private void inputVisitDate() {
@@ -31,7 +34,20 @@ public class ChristmasController {
         }
     }
 
-    private void loadMenu() {
+    /*private void loadMenu() {
         dataService.loadMenu();
+    }*/
+
+    private void inputOrderMenus() {
+        List<String[]> menuList = new ArrayList<>();
+        while (true) {
+            try {
+                menuList = inputView.readOrderMenu();
+                break;
+            } catch (IllegalArgumentException error) {
+                OutputView.printErrorMessage(error.getMessage());
+            }
+        }
+        dataService.saveOrderMenus(menuList);
     }
 }

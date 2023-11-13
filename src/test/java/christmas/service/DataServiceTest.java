@@ -26,4 +26,5 @@ public class DataServiceTest {
         dataService.saveReservationDate(input);
         assertThat(allData.getDate()).isEqualTo(input);
     }
+    
 }
