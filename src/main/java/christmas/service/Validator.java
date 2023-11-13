@@ -3,6 +3,7 @@ package christmas.service;
 import christmas.constant.ErrorMessage;
 import christmas.constant.Number;
 import christmas.constant.SavedMenus;
+import java.util.List;
 
 public class Validator {
 
@@ -24,6 +25,35 @@ public class Validator {
     public static void inputMenuValidation(String[] menu) {
         isMenuNameValidation(menu[Number.MENU.getNumber()]);
         isMenuCountValidation(menu[Number.COUNT.getNumber()]);
+    }
+
+    public static void duplicateMenuName(List<String[]> menuList) {
+        String[] menuName = separateMenuName(menuList);
+        for (int index = 0; index < menuList.size(); index++) {
+            if(compareMenuName(menuName[index],menuName,index)){
+                throw new IllegalArgumentException(ErrorMessage.ENTER_INVALID_ORDER_MENU.getMessage());
+            }
+        }
+    }
+
+    private static String[] separateMenuName(List<String[]> menuList) {
+        String[] menuName = new String[menuList.size()];
+        for (int index = 0; index < menuList.size(); index++) {
+            menuName[index] = menuList.get(index)[Number.MENU.getNumber()];
+        }
+        return menuName;
+    }
+
+    private static boolean compareMenuName(String menuName,String[] arrayMenuName,int menuIndex){
+        for(int index = 0; index < arrayMenuName.length; index++) {
+            if(index==menuIndex){
+                continue;
+            }
+            if(menuName.equals(arrayMenuName[index])){
+                retrun true;
+            }
+        }
+        return false;
     }
 
     public static void totalCountValidation(int totalCount) {

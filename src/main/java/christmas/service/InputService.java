@@ -15,16 +15,17 @@ public class InputService {
 
     public List<String[]> saveOrderMenus(String inputOrderMenus) {
         String[] splitOrderMenus = splitComma(inputOrderMenus);
-        List<String[]> result = new ArrayList<>();
+        List<String[]> menuList = new ArrayList<>();
         int totalCount = 0;
         for (int menuIndex = 0; menuIndex < splitOrderMenus.length; menuIndex++) {
             String[] splitMenu = splitHyphen(splitOrderMenus[menuIndex]);
             Validator.inputMenuValidation(splitMenu);
             totalCount += Integer.parseInt(splitMenu[Number.COUNT.getNumber()]);
-            result.add(splitMenu);
+            menuList.add(splitMenu);
         }
+        Validator.duplicateMenuName(menuList);
         Validator.totalCountValidation(totalCount);
-        return result;
+        return menuList;
     }
 
     private String[] splitComma(String inputOrderMenus) {
