@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.constant.Number;
 import christmas.model.AllData;
 
 public class CalculationService {
@@ -25,5 +26,11 @@ public class CalculationService {
         }
 
         return "평일+특별";
+    }
+
+    public int calculateChristmasDiscount(int date) {
+        int basisAmount = Number.DISCOUNT_ON_CHRISTMAS_BASIS.getNumber();
+        basisAmount += Number.DISCOUNT_AMOUT_PER_DATE.getNumber() * (date - 1);
+        return basisAmount;
     }
 }

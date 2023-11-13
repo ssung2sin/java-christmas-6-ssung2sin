@@ -10,9 +10,11 @@ import java.util.List;
 public class DataService {
 
     private final AllData allData;
+    private final CalculationService calculationService;
 
     public DataService(AllData alldata) {
         this.allData = alldata;
+        this.calculationService = new CalculationService(alldata);
     }
 
     public void saveReservationDate(int date, String dateType) {
@@ -51,6 +53,15 @@ public class DataService {
             giftMenu.append("없음");
         }
         return giftMenu;
+    }
+
+    public int printChristmasDiscount() {
+        int date = allData.getDate();
+        int discountAmount = calculationService.calculateChristmasDiscount(date);
+        String formattingAmount = numberFormatting(discountAmount);
+        OutputView.printD_DayDiscount(formattingAmount);
+        return discountAmount;
+
     }
 
     private SavedMenus compareSavedMenus(String menuName) {

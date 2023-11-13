@@ -35,4 +35,13 @@ public class OutputView {
         System.out.println(giftMenu);
         System.out.println();
     }
+
+    public static void printSubjectOfBenefit() {
+        System.out.println(OutputMessage.PRINT_BENEFITS);
+    }
+
+    public static void printD_DayDiscount(String discountAmount) {
+        System.out.printf(OutputMessage.OUTPUT_D_DAY_DISCOUNT.getMessage(), discountAmount);
+    }
+
 }

@@ -24,6 +24,7 @@ public class ChristmasController {
         printOrderMenus();
         printTotalAmountBeforeDiscount();
         printGiftMenu();
+        printBenefits();
     }
 
     private void inputVisitDate() {
@@ -71,5 +72,10 @@ public class ChristmasController {
         int totalAmount = dataService.getTotalAmount();
         StringBuilder giftMenu = dataService.printGiftMenu(totalAmount);
         OutputView.printGiftMenu(giftMenu);
+    }
+
+    private void printBenefits() {
+        OutputView.printSubjectOfBenefit();
+        dataService.printChristmasDiscount();
     }
 }
