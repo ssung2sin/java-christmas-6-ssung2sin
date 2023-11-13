@@ -13,8 +13,8 @@ public class DataService {
         this.allData = alldata;
     }
 
-    public void saveReservationDate(int date) {
-        allData.saveDate(date);
+    public void saveReservationDate(int date, String dateType) {
+        allData.saveDate(date, dateType);
     }
 
     public void saveOrderMenus(List<String[]> menuList) {

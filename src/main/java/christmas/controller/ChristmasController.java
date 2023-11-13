@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.service.CalculationService;
 import christmas.service.DataService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -8,15 +9,16 @@ import java.util.List;
 public class ChristmasController {
     private final InputView inputView;
     private final DataService dataService;
+    private final CalculationService calculationService;
 
-    public ChristmasController(InputView inputView, DataService dataService) {
+    public ChristmasController(InputView inputView, DataService dataService, CalculationService calculationService) {
         this.inputView = inputView;
         this.dataService = dataService;
+        this.calculationService = calculationService;
     }
 
     public void run() {
         inputVisitDate();
-        /*loadMenu();*/
         inputOrderMenus();
     }
 
@@ -25,7 +27,8 @@ public class ChristmasController {
         while (true) {
             try {
                 int visitDate = inputView.readDate();
-                dataService.saveReservationDate(visitDate);
+                String classificationDate = calculationService.dateCalculation(visitDate);
+                dataService.saveReservationDate(visitDate, classificationDate);
                 break;
             } catch (IllegalArgumentException error) {
                 OutputView.printErrorMessage(error.getMessage());
@@ -33,9 +36,6 @@ public class ChristmasController {
         }
     }
 
-    /*private void loadMenu() {
-        dataService.loadMenu();
-    }*/
 
     private void inputOrderMenus() {
         List<String[]> menuList;

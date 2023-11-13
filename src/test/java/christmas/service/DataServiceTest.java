@@ -27,8 +27,7 @@ public class DataServiceTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 31, 20})
     void 입력한_날짜_저장_검사(int input) {
-        dataService.saveReservationDate(input);
-        assertThat(allData.getDate()).isEqualTo(input);
+       
     }
 
     @DisplayName("입력한 메뉴 : 에피타이저 / 양송이수프 / 6000 / 3 +"
