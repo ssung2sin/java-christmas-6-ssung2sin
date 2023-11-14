@@ -65,10 +65,6 @@ public class OutputView {
         }
         if (discountValues[Number.CATEGORY_NAME_NUMBER.getNumber()] == Constant.SPECIAL.getNameCode()) {
             System.out.printf(OutputMessage.OUTPUT_DISCOUNT.getMessage()
-                    , Constant.SPECIAL.getName(), formattingDiscountAmount);
-        }
-        if (discountValues[Number.CATEGORY_NAME_NUMBER.getNumber()] == Constant.CHRISTMAS.getNameCode()) {
-            System.out.printf(OutputMessage.OUTPUT_DISCOUNT.getMessage()
                     , Constant.WEEKDAY.getName(), formattingDiscountAmount);
             int discountChristmasAmount = discountValues[Number.DISCOUNT_CHRISTMAS_NUMBER.getNumber()];
             String formattingDiscountChristmasAmount = DataService.numberFormatting(discountChristmasAmount);

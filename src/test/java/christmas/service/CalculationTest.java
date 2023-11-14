@@ -47,14 +47,7 @@ public class CalculationTest {
     @ValueSource(ints = {3, 17, 24, 31})
     void 입력한_날짜_저장_검사3(int input) {
         String date = calculationService.dateCalculation(input);
-        assertThat(date).isEqualTo("평일+특별");
-    }
-
-    @DisplayName("크리스마스 날짜 입력시 '크리스마스'저장되는지 확인")
-    @Test
-    void 입력한_날짜_저장_검사4() {
-        String date = calculationService.dateCalculation(25);
-        assertThat(date).isEqualTo("크리스마스");
+        assertThat(date).isEqualTo("특별");
     }
 
     @DisplayName("총 금액 계산 확인")
