@@ -76,6 +76,6 @@ public class ChristmasController {
 
     private void printBenefits() {
         OutputView.printSubjectOfBenefit();
-        dataService.printChristmasDiscount();
+        dataService.printBenefits();
     }
 }

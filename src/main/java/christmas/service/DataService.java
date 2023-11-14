@@ -1,6 +1,7 @@
 package christmas.service;
 
 import christmas.constant.Number;
+import christmas.constant.OutputMessage;
 import christmas.constant.SavedMenus;
 import christmas.model.AllData;
 import christmas.view.OutputView;
@@ -50,9 +51,29 @@ public class DataService {
         giftMenu.append(" 1개");
         if (totalAmount < Number.STANDARD_OF_GIFT_MENU.getNumber()) {
             giftMenu.delete(Number.DELETE_FIRST_INDEX.getNumber(), Number.DELETE_LAST_INDEX.getNumber());
-            giftMenu.append("없음");
+            giftMenu.append(OutputMessage.NOTHING.getMessage());
         }
         return giftMenu;
+    }
+
+    public boolean checktotalAmount() {
+        int totalAmount = getTotalAmount();
+        if (totalAmount >= Number.MINIMUM_AMOUNT.getNumber()) {
+            return true;
+        }
+        return false;
+    }
+
+    public void printBenefits() {
+        int totalDiscount = 0;
+        int date = allData.getDate();
+        totalDiscount += calculationService.calculateChristmasDiscount(date);
+        totalDiscount += discountByDate();
+
+    }
+
+    private int discountByDate(){
+        String date = allData.
     }
 
     public int printChristmasDiscount() {

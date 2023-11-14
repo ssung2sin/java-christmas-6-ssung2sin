@@ -26,7 +26,7 @@ public class OutputView {
     public static void printTotalAmountBeforeDiscount(String totalAmount) {
         System.out.println();
         System.out.println(OutputMessage.PRINT_TOTAL_AMOUNT_BEFORE_DISCOUNT.getMessage());
-        System.out.println(totalAmount + "원");
+        System.out.println(totalAmount + OutputMessage.WON.getMessage());
         System.out.println();
     }
 
