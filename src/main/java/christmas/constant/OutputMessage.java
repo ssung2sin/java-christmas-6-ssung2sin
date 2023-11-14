@@ -13,6 +13,7 @@ public enum OutputMessage {
     PRINT_BENEFITS("<혜택 내역>"),
     WON("원"),
     OUTPUT_D_DAY_DISCOUNT("크리스마스 디데이 할인: -%s원\n"),
+    OUTPUT_DISCOUNT("%s 할인: -%s원\n"),
     PRINT_TOTAL_BENEFITS_AMOUNT("<총혜택 금액>"),
     PRINT_ESTIMATED_AMOUNT("<할인 후 예상 결제 금액>"),
     PRINT_EVENT_BADGE("<12월 이벤트 배지>");

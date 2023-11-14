@@ -1,8 +1,13 @@
 package christmas.view;
 
+import christmas.constant.Constant;
+import christmas.constant.Number;
 import christmas.constant.OutputMessage;
+import java.text.DecimalFormat;
 
 public class OutputView {
+    static DecimalFormat decimalFormat = new DecimalFormat("###.###");
+
     public static void printIntroduction() {
         System.out.println(OutputMessage.FIRST_PRINT_INTRODUCTION.getMessage());
     }
@@ -42,6 +47,36 @@ public class OutputView {
 
     public static void printD_DayDiscount(String discountAmount) {
         System.out.printf(OutputMessage.OUTPUT_D_DAY_DISCOUNT.getMessage(), discountAmount);
+    }
+
+    public static void printBenefitOfChristmasDDay(int discountAmount) {
+        String formattingDiscount = decimalFormat.format(discountAmount);
+        System.out.printf(OutputMessage.OUTPUT_D_DAY_DISCOUNT.getMessage(), formattingDiscount);
+    }
+
+    public static void printBenefits(int[] discountValues) {
+        int discountAmount = discountValues[Number.DISCOUNT_NUMBER.getNumber()];
+        String formattingDiscountAmount = decimalFormat.format(discountAmount);
+        if (discountValues[Number.CATEGORY_NAME_NUMBER.getNumber()] == Constant.WEEKDAY.getNameCode()) {
+            System.out.printf(OutputMessage.OUTPUT_DISCOUNT.getMessage()
+                    , Constant.WEEKDAY.getName(), formattingDiscountAmount);
+        }
+        if (discountValues[Number.CATEGORY_NAME_NUMBER.getNumber()] == Constant.WEEKEND.getNameCode()) {
+            System.out.printf(OutputMessage.OUTPUT_DISCOUNT.getMessage()
+                    , Constant.WEEKEND.getName(), formattingDiscountAmount);
+        }
+        if (discountValues[Number.CATEGORY_NAME_NUMBER.getNumber()] == Constant.SPECIAL.getNameCode()) {
+            System.out.printf(OutputMessage.OUTPUT_DISCOUNT.getMessage()
+                    , Constant.SPECIAL.getName(), formattingDiscountAmount);
+        }
+        if (discountValues[Number.CATEGORY_NAME_NUMBER.getNumber()] == Constant.CHRISTMAS.getNameCode()) {
+            System.out.printf(OutputMessage.OUTPUT_DISCOUNT.getMessage()
+                    , Constant.WEEKDAY.getName(), formattingDiscountAmount);
+            int discountChristmasAmount = discountValues[Number.DISCOUNT_CHRISTMAS_NUMBER.getNumber()];
+            String formattingDiscountChristmasAmount = decimalFormat.format(discountChristmasAmount);
+            System.out.printf(OutputMessage.OUTPUT_DISCOUNT.getMessage()
+                    , Constant.SPECIAL.getName(), formattingDiscountChristmasAmount);
+        }
     }
 
 }

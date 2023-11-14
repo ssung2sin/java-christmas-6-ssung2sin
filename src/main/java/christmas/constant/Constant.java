@@ -6,7 +6,7 @@ public enum Constant {
     DESSERT("디저트", 3),
     DRINK("음료", 4),
     WEEKDAY("평일", 1),
-    WEEKAND("주말", 2),
+    WEEKEND("주말", 2),
     SPECIAL("특별", 3),
     CHRISTMAS("크리스마스", 4);
 

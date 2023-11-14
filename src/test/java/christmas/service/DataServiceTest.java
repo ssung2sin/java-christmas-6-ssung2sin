@@ -63,7 +63,7 @@ public class DataServiceTest {
         allData.saveDate(date, "상관없음");
         int discountAmount = dataService.printChristmasDiscount();
         int amount = Number.DISCOUNT_ON_CHRISTMAS_BASIS.getNumber() +
-                Number.DISCOUNT_AMOUT_PER_DATE.getNumber() * (date - 1);
+                Number.DISCOUNT_AMOUNT_PER_DATE.getNumber() * (date - 1);
         assertThat(discountAmount).isEqualTo(amount);
 
     }

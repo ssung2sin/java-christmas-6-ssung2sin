@@ -30,7 +30,7 @@ public class CalculationService {
 
     public int calculateChristmasDiscount(int date) {
         int basisAmount = Number.DISCOUNT_ON_CHRISTMAS_BASIS.getNumber();
-        basisAmount += Number.DISCOUNT_AMOUT_PER_DATE.getNumber() * (date - 1);
+        basisAmount += Number.DISCOUNT_AMOUNT_PER_DATE.getNumber() * (date - 1);
         return basisAmount;
     }
 }

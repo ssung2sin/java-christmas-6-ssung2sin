@@ -85,37 +85,66 @@ public class DataService {
         return giftMenu;
     }
 
-    /*public boolean checktotalAmount() {
-        int totalAmount = getTotalAmount();
-        if (totalAmount >= Number.MINIMUM_AMOUNT.getNumber()) {
-            return true;
-        }
-        return false;
-    }*/
-
     public void printBenefits() {
-        int totalDiscount = totalDiscountAmount();
-        if (totalDiscount >= Number.MINIMUM_AMOUNT.getNumber()) {
+        int[] totalDiscount = totalDiscountAmount();
+        if (totalDiscount[Number.TOTAL_DISCOUNT_NUMBER.getNumber()] >= Number.MINIMUM_AMOUNT.getNumber()) {
+
+            OutputView.printBenefitOfChristmasDDay(totalDiscount[Number.CHRISTMAS_D_DAY_DISCOUNT_NUMBER.getNumber()]);
+            OutputView.printBenefits(totalDiscount);
 
         }
     }
 
-    private int totalDiscountAmount() {
+    private int[] totalDiscountAmount() {
+        int[] returnDiscount = new int[Number.DISCOUNT_ALL_INCLUDE_SIZE.getNumber()];
         int totalDiscount = 0;
         int date = allData.getDate();
         String dateType = allData.getDateType();
         totalDiscount += calculationService.calculateChristmasDiscount(date);
-        //compareOrderMenuCategorys(dateType);
+        returnDiscount[4] = calculationService.calculateChristmasDiscount(date);
+        int[] discountValues = compareOrderMenuCategory(dateType);
+        assert discountValues != null;
+        totalDiscount += discountValues[1];
+        totalDiscount += discountValues[2];
+        for (int index = 0; index < discountValues.length; index++) {
+            returnDiscount[index] = discountValues[index];
+        }
+        returnDiscount[Number.TOTAL_DISCOUNT_NUMBER.getNumber()] = totalDiscount;
 
-        return totalDiscount;
+        return returnDiscount;
     }
 
 
-    /*private int compareOrderMenuCategorys(String dateType) {
-        if (dateType.equals(Constant.WEEKDAY.getName())) {
-            return calculationService;
+    private int[] compareOrderMenuCategory(String dateType) {
+        for (Constant date : Constant.values()) {
+            if (dateType.equals(date.getName())) {
+                return getDateTypeOfDiscount(date.getNameCode());
+            }
         }
-    }*/
+        return null;
+    }
+
+    private int[] getDateTypeOfDiscount(int nameCode) {
+        int[] returnValue = new int[Number.DISCOUNT_ARRAY_SIZE.getNumber()];
+        returnValue[Number.CATEGORY_NAME_NUMBER.getNumber()] = nameCode;
+        if (nameCode == Constant.WEEKDAY.getNameCode()) {
+            int dessertCount = allData.getCategoryCount().getCountDessert();
+            returnValue[Number.DISCOUNT_NUMBER.getNumber()] = dessertCount * Number.DISCOUNT_AMOUNT.getNumber();
+        }
+        if (nameCode == Constant.WEEKEND.getNameCode()) {
+            int mainCount = allData.getCategoryCount().getCountMain();
+            returnValue[Number.DISCOUNT_NUMBER.getNumber()] = mainCount * Number.DISCOUNT_AMOUNT.getNumber();
+        }
+        if (nameCode == Constant.SPECIAL.getNameCode()) {
+            returnValue[Number.DISCOUNT_NUMBER.getNumber()] = Number.DISCOUNT_AMOUNT_OF_SPECIAL_DAY.getNumber();
+        }
+        if (nameCode == Constant.CHRISTMAS.getNameCode()) {
+            int mainCount = allData.getCategoryCount().getCountMain();
+            returnValue[Number.DISCOUNT_NUMBER.getNumber()] = Number.DISCOUNT_AMOUNT_OF_SPECIAL_DAY.getNumber();
+            returnValue[Number.DISCOUNT_CHRISTMAS_NUMBER.getNumber()] = mainCount * Number.DISCOUNT_AMOUNT.getNumber();
+        }
+        return returnValue;
+    }
 
     public int printChristmasDiscount() {
         int date = allData.getDate();
