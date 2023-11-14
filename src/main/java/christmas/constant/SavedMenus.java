@@ -2,7 +2,7 @@ package christmas.constant;
 
 public enum SavedMenus {
     MUSHROOM_SOUP("에피타이저", "양송이수프", 6000),
-    TAPAS("에피타이저", "타파스", 5000),
+    TAPAS("에피타이저", "타파스", 5500),
     CAESAR_SALAD("에피타이저", "시저샐러드", 8000),
     T_BONE_STEAK("메인", "티본스테이크", 55000),
     BARBICUE_RIBS("메인", "바비큐립", 54000),
