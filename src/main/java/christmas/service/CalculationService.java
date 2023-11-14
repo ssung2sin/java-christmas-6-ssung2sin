@@ -25,7 +25,7 @@ public class CalculationService {
             return "평일";
         }
 
-        return "평일+특별";
+        return "특별";
     }
 
     public int calculateChristmasDiscount(int date) {

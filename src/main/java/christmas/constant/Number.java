@@ -24,7 +24,10 @@ public enum Number {
     CATEGORY_NAME_NUMBER(0),
     DISCOUNT_NUMBER(1),
     DISCOUNT_CHRISTMAS_NUMBER(2),
-    TOTAL_DISCOUNT_NUMBER(3);
+    TOTAL_DISCOUNT_NUMBER(3),
+    STAR(5000),
+    TREE(10000),
+    SANTA(20000);
 
     private final int number;
 

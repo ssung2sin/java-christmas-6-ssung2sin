@@ -65,6 +65,5 @@ public class DataServiceTest {
         int amount = Number.DISCOUNT_ON_CHRISTMAS_BASIS.getNumber() +
                 Number.DISCOUNT_AMOUNT_PER_DATE.getNumber() * (date - 1);
         assertThat(discountAmount).isEqualTo(amount);
-
     }
 }

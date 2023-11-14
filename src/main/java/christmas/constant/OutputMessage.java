@@ -16,7 +16,10 @@ public enum OutputMessage {
     OUTPUT_DISCOUNT("%s 할인: -%s원\n"),
     PRINT_TOTAL_BENEFITS_AMOUNT("<총혜택 금액>"),
     PRINT_ESTIMATED_AMOUNT("<할인 후 예상 결제 금액>"),
-    PRINT_EVENT_BADGE("<12월 이벤트 배지>");
+    PRINT_EVENT_BADGE("<12월 이벤트 배지>"),
+    SANTA("산타\n"),
+    TREE("트리\n"),
+    STAR("별\n");
 
     private final String message;
 
