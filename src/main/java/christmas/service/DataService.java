@@ -97,7 +97,8 @@ public class DataService {
         if (!checkDiscount) {
             OutputView.printNothingBenefits();
         }
-        OutputView.printAllBenefitAmount(totalDiscount[Number.TOTAL_DISCOUNT_NUMBER.getNumber()], checkDiscount);
+        OutputView.printAllBenefitAmount(totalDiscount[Number.TOTAL_DISCOUNT_NUMBER.getNumber()], checkDiscount
+                , getTotalAmount());
         OutputView.printEstimatedAmount(getTotalAmount(), totalDiscount[Number.TOTAL_DISCOUNT_NUMBER.getNumber()],
                 checkDiscount);
         printEventBadge(totalDiscount[Number.TOTAL_DISCOUNT_NUMBER.getNumber()]);

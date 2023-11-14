@@ -77,11 +77,19 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printAllBenefitAmount(int totalDiscountAmount, boolean checkDiscount) {
-        String formattingTotalDiscountAmount = DataService.numberFormatting(totalDiscountAmount);
+    public static void printAllBenefitAmount(int totalDiscountAmount, boolean checkDiscount, int totalCount) {
+
         System.out.println(OutputMessage.PRINT_TOTAL_BENEFITS_AMOUNT.getMessage());
         if (checkDiscount) {
-            System.out.println(formattingTotalDiscountAmount + OutputMessage.WON.getMessage());
+            if (totalCount >= Number.STANDARD_OF_GIFT_MENU.getNumber()) {
+                String formattingTotalDiscountAmount = DataService.numberFormatting(
+                        totalDiscountAmount + Number.GIFT_MENU_AMOUNT.getNumber());
+                System.out.println("-" + formattingTotalDiscountAmount + OutputMessage.WON.getMessage());
+                System.out.println();
+                return;
+            }
+            String formattingTotalDiscountAmount = DataService.numberFormatting(totalDiscountAmount);
+            System.out.println("-" + formattingTotalDiscountAmount + OutputMessage.WON.getMessage());
         }
         if (!checkDiscount) {
             System.out.println(OutputMessage.NOTHING.getMessage());
