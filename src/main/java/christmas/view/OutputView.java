@@ -52,7 +52,7 @@ public class OutputView {
         System.out.printf(OutputMessage.OUTPUT_D_DAY_DISCOUNT.getMessage(), discountAmount);
     }
 
-    public static void printBenefits(int[] discountValues) {
+    public static void printBenefits(int[] discountValues, int totalCount) {
         int discountAmount = discountValues[Number.DISCOUNT_NUMBER.getNumber()];
         String formattingDiscountAmount = DataService.numberFormatting(discountAmount);
         if (discountValues[Number.CATEGORY_NAME_NUMBER.getNumber()] == Constant.WEEKDAY.getNameCode()) {
@@ -70,6 +70,9 @@ public class OutputView {
             String formattingDiscountChristmasAmount = DataService.numberFormatting(discountChristmasAmount);
             System.out.printf(OutputMessage.OUTPUT_DISCOUNT.getMessage()
                     , Constant.SPECIAL.getName(), formattingDiscountChristmasAmount);
+        }
+        if (totalCount >= Number.STANDARD_OF_GIFT_MENU.getNumber()) {
+            System.out.println(OutputMessage.OUTPUT_GIFT_EVENT.getMessage());
         }
         System.out.println();
     }
@@ -93,7 +96,8 @@ public class OutputView {
             System.out.println(formattingAmount + OutputMessage.WON.getMessage());
         }
         if (!checkDiscount) {
-            System.out.println(OutputMessage.NOTHING.getMessage());
+            String formattingTotalAmount = DataService.numberFormatting(totalAmount);
+            System.out.println(formattingTotalAmount + OutputMessage.WON.getMessage());
         }
         System.out.println();
     }

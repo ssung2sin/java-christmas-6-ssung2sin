@@ -14,6 +14,7 @@ public enum OutputMessage {
     WON("원"),
     OUTPUT_D_DAY_DISCOUNT("크리스마스 디데이 할인: -%s원\n"),
     OUTPUT_DISCOUNT("%s 할인: -%s원\n"),
+    OUTPUT_GIFT_EVENT("증정 메뉴: -25,000원"),
     PRINT_TOTAL_BENEFITS_AMOUNT("<총혜택 금액>"),
     PRINT_ESTIMATED_AMOUNT("<할인 후 예상 결제 금액>"),
     PRINT_EVENT_BADGE("<12월 이벤트 배지>"),

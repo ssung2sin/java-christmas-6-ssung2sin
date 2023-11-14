@@ -5,7 +5,7 @@ public enum SavedMenus {
     TAPAS("에피타이저", "타파스", 5000),
     CAESAR_SALAD("에피타이저", "시저샐러드", 8000),
     T_BONE_STEAK("메인", "티본스테이크", 55000),
-    BARBICUE_RIBS("메인", "바비큐립", 45000),
+    BARBICUE_RIBS("메인", "바비큐립", 54000),
     SEAFOOD_PASTA("메인", "해산물파스타", 35000),
     CHRISTMAS_PASTA("메인", "크리스마스파스타", 25000),
     CHOCOLATE_CAKE("디저트", "초코케이크", 15000),

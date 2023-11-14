@@ -92,7 +92,7 @@ public class DataService {
             String formattingDiscount = numberFormatting(
                     totalDiscount[Number.CHRISTMAS_D_DAY_DISCOUNT_NUMBER.getNumber()]);
             OutputView.printBenefitOfChristmasDDay(formattingDiscount);
-            OutputView.printBenefits(totalDiscount);
+            OutputView.printBenefits(totalDiscount, getTotalAmount());
         }
         if (!checkDiscount) {
             OutputView.printNothingBenefits();
