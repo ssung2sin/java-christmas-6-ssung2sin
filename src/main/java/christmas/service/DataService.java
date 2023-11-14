@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.constant.Constant;
 import christmas.constant.Number;
 import christmas.constant.OutputMessage;
 import christmas.constant.SavedMenus;
@@ -36,9 +37,37 @@ public class DataService {
             int menuCount = Integer.parseInt(menuData[Number.COUNT.getNumber()]);
             menu = compareSavedMenus(menuData[Number.MENU.getNumber()]);
             allData.saveOrderMenus(menu, menuCount);
+            for (int index = 0; index < menuCount; index++) {
+                compareCategory(menu);
+            }
         }
 
     }
+
+    private void compareCategory(SavedMenus menu) {
+        for (Constant category : Constant.values()) {
+            if (menu.getCategory().equals(category.getName())) {
+                countCategory(category.getNameCode());
+                break;
+            }
+        }
+    }
+
+    private void countCategory(int categoryCode) {
+        if (categoryCode == Constant.APPETIZER.getNameCode()) {
+            allData.appetizerCount();
+        }
+        if (categoryCode == Constant.MAIN.getNameCode()) {
+            allData.mainCount();
+        }
+        if (categoryCode == Constant.DESSERT.getNameCode()) {
+            allData.dessertCount();
+        }
+        if (categoryCode == Constant.APPETIZER.getNameCode()) {
+            allData.drinkCount();
+        }
+    }
+
 
     public void printBenefitContent() {
         int date = allData.getDate();
@@ -56,13 +85,13 @@ public class DataService {
         return giftMenu;
     }
 
-    public boolean checktotalAmount() {
+    /*public boolean checktotalAmount() {
         int totalAmount = getTotalAmount();
         if (totalAmount >= Number.MINIMUM_AMOUNT.getNumber()) {
             return true;
         }
         return false;
-    }
+    }*/
 
     public void printBenefits() {
         int totalDiscount = totalDiscountAmount();
@@ -76,14 +105,17 @@ public class DataService {
         int date = allData.getDate();
         String dateType = allData.getDateType();
         totalDiscount += calculationService.calculateChristmasDiscount(date);
-        totalDiscount += discountByDate(dateType);
+        //compareOrderMenuCategorys(dateType);
 
         return totalDiscount;
     }
 
-    private int discountByDate(String dateType) {
-        if(dateType)
-    }
+
+    /*private int compareOrderMenuCategorys(String dateType) {
+        if (dateType.equals(Constant.WEEKDAY.getName())) {
+            return calculationService;
+        }
+    }*/
 
     public int printChristmasDiscount() {
         int date = allData.getDate();
@@ -109,7 +141,7 @@ public class DataService {
     }
 
     private boolean checkMenuCategoryIsDrink(String category) {
-        if (category.equals(SavedMenus.ZERO_COKE.getCategory())) {
+        if (category.equals(Constant.DRINK.getName())) {
             return true;
         }
         return false;

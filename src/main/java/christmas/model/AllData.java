@@ -8,9 +8,11 @@ public class AllData {
 
     private Date date;
     private final List<OrderMenu> orderMenus;
+    private final CategoryCount categoryCount;
 
     public AllData() {
         this.orderMenus = new ArrayList<>();
+        this.categoryCount = new CategoryCount();
     }
 
     public void saveDate(int date, String dateType) {
@@ -32,5 +34,25 @@ public class AllData {
 
     public List<OrderMenu> getOrderMenus() {
         return orderMenus;
+    }
+
+    public void appetizerCount() {
+        this.categoryCount.countAppetizer();
+    }
+
+    public void mainCount() {
+        this.categoryCount.countMain();
+    }
+
+    public void dessertCount() {
+        this.categoryCount.countDessert();
+    }
+
+    public void drinkCount() {
+        this.categoryCount.countDrink();
+    }
+
+    public CategoryCount getCategoryCount() {
+        return categoryCount;
     }
 }

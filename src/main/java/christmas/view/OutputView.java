@@ -37,7 +37,7 @@ public class OutputView {
     }
 
     public static void printSubjectOfBenefit() {
-        System.out.println(OutputMessage.PRINT_BENEFITS);
+        System.out.println(OutputMessage.PRINT_BENEFITS.getMessage());
     }
 
     public static void printD_DayDiscount(String discountAmount) {
