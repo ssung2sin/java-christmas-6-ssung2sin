@@ -65,15 +65,24 @@ public class DataService {
     }
 
     public void printBenefits() {
-        int totalDiscount = 0;
-        int date = allData.getDate();
-        totalDiscount += calculationService.calculateChristmasDiscount(date);
-        totalDiscount += discountByDate();
+        int totalDiscount = totalDiscountAmount();
+        if (totalDiscount >= Number.MINIMUM_AMOUNT.getNumber()) {
 
+        }
     }
 
-    private int discountByDate(){
-        String date = allData.
+    private int totalDiscountAmount() {
+        int totalDiscount = 0;
+        int date = allData.getDate();
+        String dateType = allData.getDateType();
+        totalDiscount += calculationService.calculateChristmasDiscount(date);
+        totalDiscount += discountByDate(dateType);
+
+        return totalDiscount;
+    }
+
+    private int discountByDate(String dateType) {
+        if(dateType)
     }
 
     public int printChristmasDiscount() {

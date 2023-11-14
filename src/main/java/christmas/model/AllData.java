@@ -21,6 +21,10 @@ public class AllData {
         return this.date.getDate();
     }
 
+    public String getDateType() {
+        return this.date.getDateType();
+    }
+
     public void saveOrderMenus(SavedMenus menu, int orderCount) {
         OrderMenu orderMenu = OrderMenu.saveOrderMenu(menu, orderCount);
         orderMenus.add(orderMenu);

@@ -17,4 +17,8 @@ public class Date {
     public int getDate() {
         return this.date;
     }
+
+    public String getDateType() {
+        return this.dateType;
+    }
 }
