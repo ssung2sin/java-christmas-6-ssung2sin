@@ -34,7 +34,7 @@ public class CalculationTest {
         assertThat(date).isEqualTo("평일");
     }
 
-    @DisplayName("주말 날짜 입력시 '주말'저장되는지 확인")
+    @DisplayName("주말 날짜 입력시 '주말' 저장되는지 확인")
     @ParameterizedTest
     @ValueSource(ints = {1, 9, 23, 29})
     void 입력한_날짜_저장_검사2(int input) {
@@ -42,7 +42,7 @@ public class CalculationTest {
         assertThat(date).isEqualTo("주말");
     }
 
-    @DisplayName("특별한 날짜 입력시 '평일+특별'저장되는지 확인")
+    @DisplayName("특별한 날짜 입력시 '특별'저장되는지 확인")
     @ParameterizedTest
     @ValueSource(ints = {3, 17, 24, 31})
     void 입력한_날짜_저장_검사3(int input) {
